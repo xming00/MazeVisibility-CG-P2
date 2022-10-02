@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Edge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\LineSeg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Vertex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Edge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\LineSeg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Vertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{82A3102F-0483-38FB-8BEB-C7EBC81A262B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B6294D7-3C65-32FA-A13E-0C32759A86D3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
