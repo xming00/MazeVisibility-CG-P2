@@ -56,6 +56,139 @@ Set_Maze(Maze *m)
 	redraw();
 }
 
+//*************************************************************************
+//
+//  
+//=========================================================================
+void MazeWindow::NormalizeVector(float* v3)
+{
+//=========================================================================
+	float v3_Len = sqrt(pow((v3[0]), 2) + pow((v3[1]), 2)+ pow((v3[2]), 2));
+	v3[0] /= v3_Len;
+	v3[1] /= v3_Len;
+	v3[2] /= v3_Len;
+}
+
+//*************************************************************************
+//
+//  ¥~¿n
+//=========================================================================
+void MazeWindow::ComputeNormalOfPlane(float* result, float* a, float* b)
+{
+//=========================================================================
+	result[0] = a[1] * b[2] - a[2] * b[1];
+	result[1] = a[2] * b[0] - a[0] * b[2];
+	result[2] = a[0] * b[1] - a[1] * b[0];
+}
+
+//*************************************************************************
+//
+//  perspective.
+//=========================================================================
+void MazeWindow::perspectivef2(float fovyInDegrees, float aspectRatio, float znear, float zfar)
+{
+	float ymax, xmax;
+    float temp, temp2, temp3, temp4;
+	float matrix[16];
+	ymax = znear * tanf(fovyInDegrees * M_PI / 360.0);
+    // ymin = -ymax;
+    // xmin = -ymax * aspectRatio;
+    xmax = ymax * aspectRatio;
+	glMatrixMode(GL_PROJECTION);
+	glGetFloatv(GL_PROJECTION_MATRIX, matrix);
+	frustumf2(matrix, -xmax, xmax, -ymax, ymax, znear, zfar);
+
+}
+
+void MazeWindow::frustumf2(float* matrix, float left, float right, float bottom, float top,	float znear, float zfar) 
+{
+	float temp, temp2, temp3, temp4;
+	temp = 2.0 * znear;
+	temp2 = right - left;
+	temp3 = top - bottom;
+	temp4 = zfar - znear;
+	matrix[0] = temp / temp2;
+	matrix[1] = 0.0;
+	matrix[2] = 0.0;
+	matrix[3] = 0.0;
+	matrix[4] = 0.0;
+	matrix[5] = temp / temp3;
+	matrix[6] = 0.0;
+	matrix[7] = 0.0;
+	matrix[8] = (right + left) / temp2;
+	matrix[9] = (top + bottom) / temp3;
+	matrix[10] = (-zfar - znear) / temp4;
+	matrix[11] = -1.0;
+	matrix[12] = 0.0;
+	matrix[13] = 0.0;
+	matrix[14] = (-temp * zfar) / temp4;
+	matrix[15] = 0.0;
+	glLoadMatrixf(matrix);
+}
+
+
+//*************************************************************************
+//
+//  lookat.
+//=========================================================================
+void MazeWindow::lookat( float* eyePosition3D, float* center3D, float* upVector3D)
+{
+	float forward[3], side[3], up[3];
+	float matrix2[16], resultMatrix[16];
+	// --------------------
+	forward[0] = center3D[0] - eyePosition3D[0];
+	forward[1] = center3D[1] - eyePosition3D[1];
+	forward[2] = center3D[2] - eyePosition3D[2];
+	NormalizeVector(forward);
+	// --------------------
+	// Side = forward x up
+	ComputeNormalOfPlane(side, forward, upVector3D);
+	NormalizeVector(side);
+	//--------------------
+	// Recompute up as: up = side x forward
+	ComputeNormalOfPlane(up, side, forward);
+	// --------------------
+	matrix2[0] = side[0];
+	matrix2[4] = side[1];
+	matrix2[8] = side[2];
+	matrix2[12] = 0.0;
+	// --------------------
+	matrix2[1] = up[0];
+	matrix2[5] = up[1];
+	matrix2[9] = up[2];
+	matrix2[13] = 0.0;
+	// --------------------
+	matrix2[2] = -forward[0];
+	matrix2[6] = -forward[1];
+	matrix2[10] = -forward[2];
+	matrix2[14] = 0.0;
+	// --------------------
+	matrix2[3] = matrix2[7] = matrix2[11] = 0.0;
+	matrix2[15] = 1.0;
+	// --------------------
+	glMatrixMode(GL_MODELVIEW);
+	
+	glMultMatrixf(matrix2);
+	glTranslatef(-eyePosition3D[0], -eyePosition3D[1], -eyePosition3D[2]);
+	// --------------------
+
+}
+//*************************************************************************
+//
+//  lookat.
+//=========================================================================
+void MazeWindow::seeMat(float* mat)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << mat[j * 4 + i] << " ";
+		}
+		std::cout << std::endl;
+	}
+
+}
 
 //*************************************************************************
 //
@@ -67,7 +200,11 @@ draw(void)
 //=========================================================================
 {
 	float   focal_length;
-
+	float mat[16] = {0};
+	for (int i = 0; i < 16; i++)
+	{
+		mat[i] = i;
+	}
 	if ( ! valid() ) {
 		// The OpenGL context may have been changed
 		// Set up the viewport to fill the window.
@@ -89,8 +226,10 @@ draw(void)
 	// Clear the screen.
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -131,16 +270,24 @@ draw(void)
 		glClear(GL_DEPTH_BUFFER_BIT);
 
 		float aspect = (float)w() / h();
-		gluPerspective(maze->viewer_fov, aspect, 0.01, (double)200);
+		//gluPerspective(maze->viewer_fov, aspect, 0.01, (double)200);
+		perspectivef2(maze->viewer_fov, aspect, 0.01, (double)200);
+		float viewer_pos[3] = { maze->viewer_posn[Maze::Y], 0.0f ,  maze->viewer_posn[Maze::X] }; // xy -> zx
+		float eye[3] = { viewer_pos[Maze::X], viewer_pos[Maze::Y], viewer_pos[Maze::Z] };
 
-
-		float viewer_pos[3] = { maze->viewer_posn[Maze::Y], 0.0f ,  maze->viewer_posn[Maze::X] };
-		gluLookAt(viewer_pos[Maze::X], viewer_pos[Maze::Y], viewer_pos[Maze::Z],
+		float center[3] = { viewer_pos[Maze::X] + sin(Maze::To_Radians(maze->viewer_dir)),
+							viewer_pos[Maze::Y],
+							viewer_pos[Maze::Z] + cos(Maze::To_Radians(maze->viewer_dir)) };
+		float up[3] = { 0.0f, 1.0f, 0.0f };
+	/*	gluLookAt(maze->viewer_posn[Maze::Y], 0.0f, maze->viewer_posn[Maze::X],
 			viewer_pos[Maze::X] + sin(Maze::To_Radians(maze->viewer_dir)),
 			viewer_pos[Maze::Y],
 			viewer_pos[Maze::Z] + cos(Maze::To_Radians(maze->viewer_dir)),
-			0.0f, 1.0f, 0.0f);
-
+			0.0f, 1.0f, 0.0f);*/
+		lookat(eye, center, up);
+		
+		glGetFloatv(GL_PROJECTION_MATRIX, mat);
+		seeMat(mat);
 		maze->Draw_View(focal_length);
 	}
 }

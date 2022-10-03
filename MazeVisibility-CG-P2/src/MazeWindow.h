@@ -22,6 +22,7 @@
 
 #include <Fl/Fl.h>
 #include <Fl/Fl_Gl_Window.h>
+#include <iostream>
 
 #include "Maze.h"
 
@@ -46,6 +47,23 @@ class MazeWindow : public Fl_Gl_Window {
 		// Update the view according to any events that have happened since
 		// the last time this method was called.
 		bool	Update(float);
+	private:
+		// my own function
+		void lookat( float* eyePosition3D,
+			float* center3D, float* upVector3D);
+
+		void NormalizeVector(float*);
+
+		void ComputeNormalOfPlane(float* result, float* a, float* b);
+		void seeMat(float* mat);
+
+		void perspectivef2( float fovyInDegrees, float aspectRatio,
+			float znear, float zfar);
+
+		void frustumf2(float* matrix, float left, float right, float bottom, float top,
+			float znear, float zfar);
+
+	
 
 	private:
 		bool	Drag(float);	// The function to call for mouse drag events

@@ -214,6 +214,7 @@ Maze(const char *filename)
 	Find_View_Cell(cells[0]);
 
 	frame_num = 0;
+
 }
 
 
@@ -658,7 +659,7 @@ Draw_View(const float focal_dist)
 	// GL method
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 	for (int i = 0; i < (int)this->num_edges; i++)
 	{
 		float edge_start[2] = {
