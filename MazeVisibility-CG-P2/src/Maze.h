@@ -23,6 +23,8 @@
 #include "GL/GL.h"		// to test program whether it's correct
 #include "GL/GLU.h"		// to test program whether it's correct
 #include "Cell.h"
+#include "LineSeg.h"
+#include <iostream>
 // 
 
 
@@ -85,8 +87,6 @@ class Maze {
 		// the viewer from passing through walls.
 		void	Move_View_Posn(const float dx, const float dy, const float dz);
 
-		// Draws_Wall to help Draw_Map
-		void Draw_Wall(const float start[2], const float end[2], const float color[3]);
 
 		// Draws the map view of the maze. It is passed the minimum and maximum
 		// corners of the window in which to draw.
@@ -122,6 +122,11 @@ class Maze {
 		void    Build_Maze(void);
 		void    Set_Extents(void);
 		void    Find_View_Cell(Cell*);
+		void lookat(float* eyePosition3D,
+			float* center3D, float* upVector3D);
+
+		void Draw_Wall(LineSeg wall,LineSeg L, LineSeg R, const float color[3]);
+		void draw_cell(Cell* now_cell, LineSeg L, LineSeg R);
 
 	private:
 		Cell				*view_cell;// The cell that currently contains the view
@@ -158,6 +163,10 @@ class Maze {
 											// looking. Measured in degrees about the z
 											// axis, in the usual way.
 		float		viewer_fov;			// The horizontal field of view, in degrees.
+		//  相機參數設置
+		float		camaraNear = 0.001f;
+		float		camaraFar = 200.0f;
+
 };
 
 

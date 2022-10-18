@@ -56,6 +56,8 @@ class MazeWindow : public Fl_Gl_Window {
 
 		void ComputeNormalOfPlane(float* result, float* a, float* b);
 		void seeMat(float* mat);
+		void Translatef2(float x, float y, float z);
+
 
 		void perspectivef2( float fovyInDegrees, float aspectRatio,
 			float znear, float zfar);

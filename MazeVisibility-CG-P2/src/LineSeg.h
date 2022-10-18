@@ -30,6 +30,8 @@ class LineSeg {
 		// start and end points as the edge.
 		LineSeg(Edge*);
 
+		LineSeg(float vecS[4], float vecE[4], int);
+
 	public:
 		// Return the parameter value at which this segment crosses the given
 		// segment. This will return parameter values outside the range 0,1
@@ -37,6 +39,8 @@ class LineSeg {
 		// DOES NOT tell you whether the edge is "entering" or "leaving".
 		// But you can use tests like Edge::Point_Side() to figure that out.
 		float   Cross_Param(LineSeg);
+
+		char Point_Side(float x, float y);
 
 	public:
 		float   start[2];	// Starting point, x and y.

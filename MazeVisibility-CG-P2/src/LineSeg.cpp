@@ -16,7 +16,7 @@
 *************************************************************************/
 
 #include "LineSeg.h"
-
+#include <iostream>
 //**********************************************************************
 //
 // * Constructor from an edge
@@ -45,6 +45,16 @@ LineSeg(float xs, float ys, float xe, float ye)
 	end[0] = xe;
 	end[1] = ye;
 }
+
+
+LineSeg::
+LineSeg(float vecS[4], float vecE[4], int y_Index) {
+	start[0] = vecS[0];
+	start[1] = vecS[y_Index];
+	end[0] = vecE[0];
+	end[1] = vecE[y_Index];
+}
+
 
 
 //**********************************************************************
@@ -78,3 +88,30 @@ Cross_Param(LineSeg e)
 
 	return s / denom;
 }
+
+char LineSeg::Point_Side(float x, float y)
+{
+	// Compute the determinant: | xs ys 1 |
+//                          | xe ye 1 |
+//                          | x  y  1 |
+// Use its sign to get the answer.
+
+	float   det;
+
+	det = start[0] *
+		(end[Vertex::Y] - y) -
+		start[Vertex::Y] *
+		(end[Vertex::X] - x) +
+		end[Vertex::X] * y -
+		end[Vertex::Y] * x;
+	//std::cout << "d:" << det << std::endl;
+	if (det == 0.0)
+		return Edge::ON;
+	else if (det > 0.0)
+		return Edge::LEFT;
+	else
+		return Edge::RIGHT;
+
+
+}
+

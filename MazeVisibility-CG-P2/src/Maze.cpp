@@ -24,6 +24,8 @@
 #include <time.h>
 #include <FL/Fl.h>
 #include <FL/fl_draw.h>
+#include "global.h"
+
 
 const char Maze::X = 0;
 const char Maze::Y = 1;
@@ -577,26 +579,159 @@ Set_View_FOV(const float f)
 	viewer_fov = f;
 }
 
-//**********************************************************************
-//
-//	 Draws_Wall to help Draw_Map
-//======================================================================
-void Maze::Draw_Wall(const float start[2], const float end[2], const float color[3])
+void Mat_Multi(float mat[16], float vec[4], float result[4])
 {
-	float edge0[3] = { start[Y], 0.0f, start[X] };
-	float edge1[3] = { end[Y], 0.0f, end[X] };
-	glBegin(GL_POLYGON);
-	// glColor3f(0.0f, 1.0f, 0.0f);
-	glColor3fv(color);
-	glVertex3f(edge0[X], 1.0f, edge0[Z]);
-	glVertex3f(edge1[X], 1.0f, edge1[Z]);
-	glVertex3f(edge1[X], -1.0f, edge1[Z]);  // edge0 
-	glVertex3f(edge0[X], -1.0f, edge0[Z]);  // edge1 的話會變三角空洞
-	glEnd();
+	float t[4] = { 0 };
+	for (int i = 0; i < 4; i++)
+	{
+		t[i] = vec[i];
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		float sum = 0;
+		for (int j = 0; j < 4; j++)
+		{
+			sum +=  mat[j * 4 + i] * t[j];
+		}
+		result[i] = sum;
+	}
+	
+}
 
 
+
+bool Clip(LineSeg frustumLine, float start[4], float end[4])
+{
+	//if (frustumLine.Point_Side(start[0], start[2]) == Edge::RIGHT)			// START 在 右(裡面)
+	//{
+	//	// END 在左 (外面)
+	//	if (frustumLine.Point_Side(end[0], end[2]) == Edge::LEFT)
+	//	{
+	//		LineSeg wall(start[0], start[2], end[0], end[2]);
+	//		float precent = frustumLine.Cross_Param(wall);
+	//		// 切end
+	//		end[0] = frustumLine.start[0] + (frustumLine.end[0] - frustumLine.start[0]) * precent;
+	//		end[2] = frustumLine.start[1] + (frustumLine.end[1] - frustumLine.start[1]) * precent;
+
+	//	}
+	//	// END 在右
+	//	else if(frustumLine.Point_Side(end[0], end[2]) == Edge::RIGHT)
+	//	{
+	//		// 直接留，不用切
+
+	//	}
+
+	//	
+	//}
+	//else if (frustumLine.Point_Side(end[0], end[2]) == Edge::RIGHT)	// end 在右 (裡面) start 在 左(外面)
+	//{
+
+	//	LineSeg wall(start[0], start[2], end[0], end[2]);
+	//	float precent = frustumLine.Cross_Param(wall);
+	//	// 切start
+	//	start[0] = frustumLine.start[0] + (frustumLine.end[0] - frustumLine.start[0]) * precent;
+	//	start[2] = frustumLine.start[1] + (frustumLine.end[1] - frustumLine.start[1]) * precent;
+
+	//	
+
+	//}								// start , end 都在 左(外面)
+	//else			// 直接下一個				
+	//{
+	//	return false;
+	//}
+	//return true;
+
+	char s_side = frustumLine.Point_Side(start[0], start[2]);
+	char e_side = frustumLine.Point_Side(end[0], end[2]);
+	if (s_side == Edge::RIGHT) {
+		if (e_side == Edge::LEFT) {
+			float percent = frustumLine.Cross_Param(LineSeg(start, end, 2));
+			end[0] = frustumLine.start[0] + (frustumLine.end[0] - frustumLine.start[0]) * percent;
+			end[2] = frustumLine.start[1] + (frustumLine.end[1] - frustumLine.start[1]) * percent;
+		}
+	}
+	else if (e_side == Edge::RIGHT) {
+		float percent = frustumLine.Cross_Param(LineSeg(start, end, 2));
+		start[0] = frustumLine.start[0] + (frustumLine.end[0] - frustumLine.start[0]) * percent;
+		start[2] = frustumLine.start[1] + (frustumLine.end[1] - frustumLine.start[1]) * percent;
+	}
+	else {
+		return false;
+	}
+	return true;
 
 }
+
+void seeMat(float* mat)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << mat[j * 4 + i] << " ";
+		}
+		std::cout << std::endl;
+	}
+
+}
+
+
+////**********************************************************************
+////
+////	 Draws_Wall to help Draw_Map
+////======================================================================
+//void Maze::Draw_Wall(LineSeg wall,LineSeg L, LineSeg R, const float color[3])
+//{
+//	LineSeg front(R.end[0], R.end[1], L.start[0], L.start[1]);
+//	float startPoint[4] = { wall.start[1], 1.0f, wall.start[0], 1.0f };
+//	float endPoint[4]   = { wall.end[1], 1.0f, wall.end[0], 1.0f };
+//	// transformation
+//	float modelView[16];
+//	float project[16];
+//	glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+//	std::cout << "modealView:\n";
+//	seeMat(modelView);
+//	glGetFloatv(GL_PROJECTION_MATRIX, project);
+//	std::cout << "project : \n";
+//	seeMat(project);
+//
+//	float NDC_start[4];
+//	Mat_Multi(modelView, startPoint, NDC_start);
+//	float NDC_end[4];
+//	Mat_Multi(modelView, endPoint, NDC_end);
+//	if (!Clip(L,NDC_start, NDC_end) || !Clip(R, NDC_start, NDC_end))
+//	{
+//		return;		// 視椎外畫下一條
+//	}
+//	Mat_Multi(project, NDC_start, NDC_start);
+//	Mat_Multi(project, NDC_end, NDC_end);
+//	// 確保transform 後的W直沒跑掉
+//	if (NDC_start[3] < camaraNear && NDC_end[3] < camaraNear)
+//	{
+//		return;
+//	}
+//
+//	float ScreenStart[4], ScreenEnd[4];
+//	for (int i = 0; i < 4; i++)
+//	{
+//		ScreenStart[i] = NDC_start[i] / NDC_start[3];
+//		ScreenEnd[i] = NDC_end[i] / NDC_end[3];
+//	}
+//
+//
+//	glBegin(GL_POLYGON);
+//	// glColor3f(0.0f, 1.0f, 0.0f);
+//	glColor3fv(color);
+//	glVertex2f(ScreenStart[0], ScreenStart[1]);
+//	glVertex2f(ScreenEnd[0], ScreenEnd[1]);
+//	glVertex2f(ScreenEnd[0], -ScreenEnd[1]);
+//	glVertex2f(ScreenStart[0], -ScreenStart[1]);
+//	glEnd();
+//
+//
+//
+//}
 
 
 //**********************************************************************
@@ -660,29 +795,111 @@ Draw_View(const float focal_dist)
 	glClear(GL_DEPTH_BUFFER_BIT);
 
 	//glEnable(GL_DEPTH_TEST);
-	for (int i = 0; i < (int)this->num_edges; i++)
-	{
-		float edge_start[2] = {
-			this->edges[i]->endpoints[Edge::START]->posn[Vertex::X],
-			this->edges[i]->endpoints[Edge::START]->posn[Vertex::Y]
-		};
-		float edge_end[2] = {
-			this->edges[i]->endpoints[Edge::END]->posn[Vertex::X],
-			this->edges[i]->endpoints[Edge::END]->posn[Vertex::Y]
-		};
+	
+	/*LineSeg(my_near * tan(To_Radians(viewer_fov * 0.5f)), -my_near, my_far * tan(To_Radians(viewer_fov * 0.5f)), -my_far),
+		LineSeg(-my_far * tan(To_Radians(viewer_fov * 0.5f)), -my_far, -my_near * tan(To_Radians(viewer_fov * 0.5f)), -my_near));*/
 
-		float color[3] = { this->edges[i]->color[0], this->edges[i]->color[1], this->edges[i]->color[2] };
-		if (this->edges[i]->opaque)
-		{
-			Draw_Wall(edge_start, edge_end, color);
-		}
+		LineSeg L(camaraNear* tan(To_Radians(viewer_fov * 0.5f)), -camaraNear, camaraFar * tan(To_Radians(viewer_fov * 0.5f)), -camaraFar);
+		LineSeg R(-camaraFar * tan(To_Radians(viewer_fov * 0.5f)), -camaraFar, -camaraNear * tan(To_Radians(viewer_fov * 0.5f)), -camaraNear);
+		for (int i = 0; i < num_cells; i++)cells[i]->foot_print = false;
+		draw_cell(view_cell,L, R);
+		
 
-	}
+	
 	//###################################################################
 	// TODO
 	// The rest is up to you!
 	//###################################################################
 }
+
+void Maze::draw_cell(Cell* now_cell, LineSeg L, LineSeg R) {
+	now_cell->foot_print = true;
+	LineSeg front(R.end[0], R.end[1], L.start[0], L.start[1]);
+	for (int i = 0; i < 4; i++) {
+		LineSeg edge_line(now_cell->edges[i]);
+		float start[4] = { edge_line.start[1], 1.0f, edge_line.start[0], 1.0f };
+		float end[4]   = { edge_line.end[1], 1.0f, edge_line.end[0], 1.0f };
+
+		// transformation
+		//float modelView[16] = {0};
+		//float project[16] = {0};
+		//glGetFloatv(GL_MODELVIEW_MATRIX, modelView);
+		//modelView = global::modelView;
+		//std::cout << "modealView:\n";
+		//seeMat(global::modelView);
+		//glGetFloatv(GL_PROJECTION_MATRIX, project);
+		//project = global::project;
+		//std::cout << "project : \n";
+		//seeMat(global::project);
+
+		//float NDC_start[4];
+		Mat_Multi(global::modelView, start, start);
+		//float NDC_end[4];
+		Mat_Multi(global::modelView, end, end);
+
+
+		
+		if (!Clip(L, start, end) || !Clip(R, start, end)) continue;
+		edge_line.start[0] = start[0];//把切過後的丟回來
+		edge_line.start[1] = start[2];//把切過後的丟回來
+		edge_line.end[0] = end[0];//把切過後的丟回來
+		edge_line.end[1] = end[2];//把切過後的丟回來
+		if (now_cell->edges[i]->opaque) {
+			if (!Clip(front, start, end)) continue;
+
+			Mat_Multi(global::project, start, start);
+			Mat_Multi(global::project, end, end);
+
+
+			if (start[3] < camaraNear && end[3] < camaraNear) continue;
+			// NDC 座標  除W 轉 screen 座標 
+			float ScreenStart[4], ScreenEnd[4];
+			for (int i = 0; i < 4; i++)
+			{
+				ScreenStart[i] = start[i] / start[3];
+				ScreenEnd[i] = end[i] / end[3];
+			}
+			glBegin(GL_POLYGON);
+			glColor3fv(now_cell->edges[i]->color);
+			glVertex2f(ScreenStart[0], ScreenStart[1]);
+			glVertex2f(ScreenEnd[0], ScreenEnd[1]);
+			glVertex2f(ScreenEnd[0], -ScreenEnd[1]);
+			glVertex2f(ScreenStart[0], -ScreenStart[1]);
+			glEnd();
+		}
+		else {
+			//edge_line => 切完後的牆
+			if (now_cell->edges[i]->Neighbor(now_cell) == NULL) continue;
+			static float pre_Lx = 0.0f, pre_Rx = 0.0f, pre_Ly = 0.0f, pre_Ry = 0.0f; //因下面的if else if 可能都不會進去，所以要讓之前的值維持，才不會沒初始化變數就呼叫function
+			float Lx = pre_Lx, Rx = pre_Rx, Ly = pre_Ly, Ry = pre_Ry;
+
+			LineSeg midline(0.0f, 0.0f, (edge_line.start[0] + edge_line.end[0]) * 0.5, (edge_line.start[1] + edge_line.end[1]) * 0.5);
+			if (midline.Point_Side(edge_line.start[0], edge_line.start[1]) == Edge::LEFT && midline.Point_Side(edge_line.end[0], edge_line.end[1]) == Edge::RIGHT) {
+				Lx = edge_line.start[0];
+				Ly = edge_line.start[1];
+				Rx = edge_line.end[0];
+				Ry = edge_line.end[1];
+			}
+			else if (midline.Point_Side(edge_line.start[0], edge_line.start[1]) == Edge::RIGHT && midline.Point_Side(edge_line.end[0], edge_line.end[1]) == Edge::LEFT) {
+				Lx = edge_line.end[0];
+				Ly = edge_line.end[1];
+				Rx = edge_line.start[0];
+				Ry = edge_line.start[1];
+			}
+			pre_Lx = Lx;
+			pre_Rx = Rx;
+			pre_Ly = Ly;
+			pre_Ry = Ry;
+			LineSeg newL(Lx, Ly, Lx / Ly * -camaraFar, -camaraFar);
+			LineSeg newR(Rx / Ry * -camaraFar, -camaraFar, Rx, Ry);
+			if (!now_cell->edges[i]->Neighbor(now_cell)->foot_print && fabs((Lx / Ly * -camaraFar) - (Rx / Ry * -camaraFar)) > 0.00001) {
+				draw_cell(now_cell->edges[i]->Neighbor(now_cell), newL, newR);
+			}
+		}
+
+	}
+}
+
 
 
 //**********************************************************************

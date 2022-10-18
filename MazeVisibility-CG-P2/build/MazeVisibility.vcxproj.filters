@@ -24,6 +24,9 @@
     <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\CMakeLists.txt" />

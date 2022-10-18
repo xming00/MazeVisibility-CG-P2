@@ -313,6 +313,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\global.h" />
     <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MapWidget.h" />
     <ClCompile Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MapWidget.cpp" />
     <ClInclude Include="D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.h" />
