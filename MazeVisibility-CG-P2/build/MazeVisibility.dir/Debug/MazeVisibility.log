@@ -1,5 +1,4 @@
-﻿  MapWidget.cpp
-  Maze.cpp
+﻿  Maze.cpp
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(46,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(123,31): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(124,31): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
@@ -27,31 +26,25 @@ D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(176,5): warning 
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(188,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(196,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
 D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(381,12): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(802,84): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(802,23): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(803,86): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(803,24): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(876,119): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(876,72): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(1035,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  MazeWindow.cpp
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(84,15): warning C4244: '正在初始化': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(160,43): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(158,17): warning C4101: 'temp2': 未參考的區域變數
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(158,24): warning C4101: 'temp3': 未參考的區域變數
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(158,31): warning C4101: 'temp4': 未參考的區域變數
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(158,11): warning C4101: 'temp': 未參考的區域變數
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(173,13): warning C4244: '=': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(208,21): warning C4101: 'resultMatrix': 未參考的區域變數
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(273,12): warning C4244: '=': 將 'int' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(343,63): warning C4305: '引數': 從 'double' 轉換為 'float'，是由較大的類型轉換為較小的類型，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(349,43): warning C4838: 從 'double' 到 'float' 的轉換必須是縮小轉換
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(349,43): warning C4244: '正在初始化': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(351,28): warning C4838: 從 'double' 到 'float' 的轉換必須是縮小轉換
-D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\MazeWindow.cpp(351,28): warning C4244: '正在初始化': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
-  RunMaze.cpp
-  正在產生程式碼...
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(727,84): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(727,23): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(728,86): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(728,24): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(804,99): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(804,62): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(971,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+fltk_gld.lib(Fl_Gl_Device_Plugin.obj) : warning LNK4099: 找不到 PDB 'fltk_gl.pdb' (有 'fltk_gld.lib(Fl_Gl_Device_Plugin.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk_gl.pdb')，當做沒有偵錯資訊，連結物件
+fltk_gld.lib(Fl_Gl_Window.obj) : warning LNK4099: 找不到 PDB 'fltk_gl.pdb' (有 'fltk_gld.lib(Fl_Gl_Window.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk_gl.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(Fl.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(Fl.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(Fl_Input_.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(Fl_Input_.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
 fltkd.lib(Fl_Menu.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(Fl_Menu.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
-fltkd.lib(fl_gtk.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_gtk.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(Fl_Repeat_Button.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(Fl_Repeat_Button.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(Fl_get_system_colors.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(Fl_get_system_colors.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_arc.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_arc.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_arci.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_arci.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_curve.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_curve.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_draw.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_draw.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_plastic.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_plastic.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
 fltkd.lib(fl_symbols.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_symbols.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
+fltkd.lib(fl_vertex.obj) : warning LNK4099: 找不到 PDB 'fltk.pdb' (有 'fltkd.lib(fl_vertex.obj)' 或位於 'D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\fltk.pdb')，當做沒有偵錯資訊，連結物件
   MazeVisibility.vcxproj -> D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Debug\MazeVisibility.exe

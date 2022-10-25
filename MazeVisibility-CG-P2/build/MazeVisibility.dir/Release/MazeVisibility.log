@@ -1,0 +1,36 @@
+﻿  Maze.cpp
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(46,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(123,31): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(124,31): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(146,54): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(148,59): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(159,54): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(161,59): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(171,54): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(173,59): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(183,54): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(185,59): warning C4312: '類型轉換': 將 'int' 轉換為較大的 'Cell *'
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(90,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(94,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(101,8): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(102,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(109,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(117,8): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(119,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(129,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(137,8): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(138,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(151,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(164,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(176,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(188,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(196,7): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(381,12): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(727,84): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(727,23): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(728,86): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(728,24): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(804,99): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(804,62): warning C4244: '引數': 將 'double' 轉換為 'float'，由於類型不同，可能導致資料遺失
+D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\src\Maze.cpp(970,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  MazeVisibility.vcxproj -> D:\CG\P2\MazeVisibility-CG-P2\MazeVisibility-CG-P2\build\Release\MazeVisibility.exe
